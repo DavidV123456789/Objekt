@@ -5,6 +5,8 @@
 #ifndef UNTITLED_KRUH_H
 #define UNTITLED_KRUH_H
 #include <iostream>
+//cin, cout - objektxx ktore vznikli na zaklade triedy v iostream; misime si ich zo std prestoru zobrat = std::cin/ std::cout
+
 // na vytvorenie objektu prvotne potrbujeme vytvoriť triedu "šablónu"
 class Kruh
 {

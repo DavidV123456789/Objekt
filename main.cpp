@@ -1,6 +1,21 @@
 
 #include "kruh.h"
 
+using  std::cout; //importovanie cout do globalneho priestoru kde je aj main 1
+using  std::cin;
+using  std::endl;
+
+//using namespace srd; --- cely menny priestor .= nepotrebujeme to cele zbytocne nepouzivat;
+
+namespace  David{
+    int vek;
+    int getVek(){;};
+}
+
+namespace  Roman{
+    int vek;
+    int getVek(){;};
+}
 int main() {
     Kruh poleKruhov[5];
     // Kvôli konštruktorovi: Kruh(); sa automatiky vždy spýta na jej hodnotu
@@ -25,6 +40,22 @@ int main() {
     cout<<Siesty.getPolomer();
     */
 
+    /*
+    std::cout<<"Vypisujem na obrazovku..." //pozri sa do std menneho priestoru najdi objekt cout ktorý sa vytvoril na základe iostream, umoznuje vstup na obrazovku; pretazeny
+    std::cin>>cislo; // objekt ktory ma vsetko a pretazeni >> na akykolvek vstup akejkolvek premennej;
+    cout<<"Uz som v globalnom priestore"<<endl; //2. ak je tam 1. endl = odriadkovanie
 
+    cin>>cislo;
+
+     Roman::vek;
+     David::vek;
+
+     Roman::getVek();
+     David::getVek(); /deklarativne oblasti kazde zvlast
+
+     using Roman::vek; //pouzivat teraz iba Romanov ked chcem David dat David;
+
+
+     */
     return 0;
 }

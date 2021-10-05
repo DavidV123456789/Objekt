@@ -20,9 +20,9 @@ float Kruh::getObsah() const {
 }
 
 Kruh Kruh::spocitajKruhy(Kruh other) const {
-    Kruh novy
-
-
+    Kruh Treti; //vytvorime novy kruh
+    Treti.polomer = this->polomer + other.polomer; // this = pointer na seba sameho, pouziva sa sipka nie bodka, odkazuje sa na objekt ktoreho metodu volam, na seba sameho, do
+    return  Treti;// vrat kruh
 }
 
 Kruh Kruh::spocitajKruhy() const {
