@@ -2,14 +2,16 @@
 // Created by map on 27. 9. 2021.
 //
 #include "kruh.h"
-
+/*
 int Kruh::getPolomer() const {
     return polomer;
 }
+
 //(Kruh::)len v c++. Ide o zdieľanú pamäť objektu (menný priestor).
 void Kruh::setPolomer(int r) {
-     polomer= r;
+    polomer= r;
 }
+ */
 
 float Kruh::getObvod() const {
     return 2*PI*polomer;
@@ -20,24 +22,32 @@ float Kruh::getObsah() const {
 }
 
 Kruh Kruh::spocitajKruhy(Kruh other) const {
-    Kruh Treti; //vytvorime novy kruh
-    Treti.polomer = this->polomer + other.polomer; // this = pointer na seba sameho, pouziva sa sipka nie bodka, odkazuje sa na objekt ktoreho metodu volam, na seba sameho, do
-    return  Treti;// vrat kruh
+    //Kruh Treti; //vytvorime novy kruh
+    //Treti.polomer = this->polomer + other.polomer; // this = pointer na seba sameho, pouziva sa sipka nie bodka, odkazuje sa na objekt ktoreho metodu volam, na seba sameho, do
+    //return  Treti;// vrat kruh
+    return {r: this->polomer+other.polomer}; // 1. možnost
+    // return Kruh(his->polomer+other.polomer) // 2. možnost
 }
 
 Kruh Kruh::spocitajKruhy() const {
+    /*
     Kruh Novy;
     int polomer;
     std::cout<<"Zadaj polomer:";
     std::cin>>polomer;
     Novy.polomer= this->polomer+polomer;
     return polomer;
+    */
+    return Kruh (this->polomer+polomer);
 }
 
 Kruh Kruh::spocitajKruhy(const Kruh *other) const {
-
-
-
+    /*
+    Kruh Novy;
+    Novy.polomer=this->polomer+other->polomer;
+    return  Novy;
+     */
+    return { r: this->polomer+other->polomer};
 }
 
 Kruh::Kruh() {
@@ -47,6 +57,28 @@ Kruh::Kruh() {
     this->polomer=mPolomer
 }
 
-Kruh::Kruh(int r) {
-    this->polomer=r;
+Kruh::Kruh(int r):polomer(r) //iniciačný zoznam premenných
+ {
+    //this->polomer=r;
+}
+
+Kruh Kruh::odcitajKruhy(const Kruh *oher) const {
+    int v= this->polomer-oher->polomer
+    return (polomer<oher->polomer)? 1:v;
+}
+
+Kruh Kruh::odcitajKruhy(const Kruh other) const {
+    int v= this->polomer-oher->polomer
+    return (polomer<oher->polomer)? 1:v;        int
+}
+
+Kruh Kruh::odcitajKruhy() const {
+    int v= this->polomer-oher->polomer
+    return (polomer<oher->polomer)? 1:v;
+}
+
+bool Kruh::jeMensi(const Kruh *other) const
+{
+
+    return (polomer<other->polomer)? true:false;// ak je odpoved ano tak true ak nie tak flase
 }

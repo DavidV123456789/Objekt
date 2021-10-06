@@ -16,9 +16,11 @@ public:
     Kruh(); //konštruktor, len holý názov triedy + nejaké parametre
     // vypýta si polomer vznikajuceho kruhu
     Kruh(int r); // vytvorí kruh a automaticky mu dá polomer r
+    //implicitný parameter Kruh(int r: 5); len vtedy ak enmá aj Kruh();
     char farba;
-    int getPolomer() const;
-    void setPolomer(int r);
+    //int getPolomer() const;
+    int getPolomer() const {return polomer;}; // inline metoda, nahrada za getpolmer v kruh.c, max 1-2 prikazove
+    void setPolomer(int r){polomer=r;}; //inline metoda
     float getObvod() const;
     float getObsah() const;
     Kruh spocitajKruhy(Kruh other) const;//takto kopírujeme a posielame celý kruh
@@ -27,6 +29,10 @@ public:
     // ,alebo počte parametrov. PC si vyberie podľa inputu
     //1.const (inputový kruh sa nedá zmeniť), 2.const (celkový kruh sa nedá zmeniť)
     Kruh spocitajKruhy() const; // zalozi novy kruh, vypyta si jeho polomer a spocita ho s volajucim
+    Kruh odcitajKruhy(const Kruh *oher) const;
+    Kruh odcitajKruhy(const Kruh other) const;
+    Kruh odcitajKruhy() const;
+    bool jeMensi(const Kruh *other);//true or false // pri pointeroch dávame const aby ho nedokázal zmeniť
     //static const float PI; // 1.spôsob
     static constexpr float PI=3.14; //2.spôsob
 };
