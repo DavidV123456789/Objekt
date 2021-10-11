@@ -62,20 +62,47 @@ Kruh::Kruh(int r):polomer(r) //iniciačný zoznam premenných
     //this->polomer=r;
 }
 
-Kruh Kruh::odcitajKruhy(const Kruh *oher) const {
-    int v= this->polomer-oher->polomer
-    return (polomer<oher->polomer)? 1:v;
+Kruh Kruh::odcitajKruhy(const Kruh *other) const {
+    int v= this->polomer-other->polomer
+    return (polomer<other->polomer)? 1:v;
 }
 
 Kruh Kruh::odcitajKruhy(const Kruh other) const {
-    int v= this->polomer-oher->polomer
-    return (polomer<oher->polomer)? 1:v;        int
+    int v= this->polomer-other->polomer
+    return (polomer<other->polomer)? 1:v;        int
 }
 
 Kruh Kruh::odcitajKruhy() const {
-    int v= this->polomer-oher->polomer
+    int v= this->polomer-other->polomer
     return (polomer<oher->polomer)? 1:v;
 }
+
+void Kruh::vymenKruhy(Kruh *prvy, Kruh *druhy) {
+    Kruh std( r: 0);
+    std=*prvy;
+    *prvy= *druhy;
+    *druhy= std;
+
+}
+
+void Kruh::vymenKruhy(Kruh &prvy, Kruh &druhy) {
+    Kruh std( r: 0);
+    std = prvy;
+    prvy = druhy;
+    druhy = std;
+}
+
+Kruh Kruh::operator+(const Kruh &other) const {
+
+
+    return {polomer+other.polomer};
+    //alternatíva// return Kruh(polomer+other.polomer);
+}
+
+bool Kruh::operator<(const Kruh &other) const {
+    return polomer<other.polomer;
+}
+
 
 bool Kruh::jeMensi(const Kruh *other) const
 {

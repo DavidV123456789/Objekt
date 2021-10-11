@@ -18,12 +18,28 @@ namespace  Roman{
 }
  */
 int main() {
+    Kruh K1( r:4);
+    Kruh K2( r: 8);
+    Kruh Spocitane=K1+K2; //vdaka pretazenemu operatoru + vie ako spocitat objekty typu kruh
+    std::cout<<Spocitane.getPolomer();
+    std::cout<<(K1<K2);
+    /*
+    //pracovanie s odkazami
+    int c;
+   int &odkazC = c;
 
+   Kruh K1( r:4);
+   Kruh K2( r: 8);
+   Kruh::vymenKruhy( &:K1, &:K2);
+   std::cout<<K1.getPolomer()<<" "<<K2.getPolomer();
+   */
+    /*
     Kruh Prvy;
     Kruh Druhy( r: 10);
     Kruh Treti = Kruh( r: 5);
     Kruh Stvrty = Kruh()
     Kruh Piaty { r: 6};
+
     // všetky tieto metódy vyvolania konštruktora sú správne
 
     auto cislo=10;
@@ -31,7 +47,7 @@ int main() {
     auto znak ='a';
     auto Siesty = Kruh();
     //automatické zisťovanie typu
-
+    */
     //Kruh poleKruhov[5];
     // Kvôli konštruktorovi: Kruh(); sa automatiky vždy spýta na jej hodnotu
     // konštruktor zaezpečuje to aby premenná mala vždy nejakú hodnotu

@@ -23,18 +23,26 @@ public:
     void setPolomer(int r){polomer=r;}; //inline metoda
     float getObvod() const;
     float getObsah() const;
+
+    //prezentovanie operatorov
+    Kruh operator+(const Kruh &other) const;//spocituje 2 kruhy
+    bool operator<(const Kruh &other) const;//zistuje ci je kruh mensi
+
+    //koniec prez. operatorov
     Kruh spocitajKruhy(Kruh other) const;//takto kopírujeme a posielame celý kruh
     Kruh spocitajKruhy(const Kruh *other) const;//*other, takto dávame len odkaz na kruh
     // V c++ sa dajú preťažiť funkcie, teda môžu existovať 2 funkcie s rovnakým názvom ale sa musia líšiť v type
     // ,alebo počte parametrov. PC si vyberie podľa inputu
     //1.const (inputový kruh sa nedá zmeniť), 2.const (celkový kruh sa nedá zmeniť)
     Kruh spocitajKruhy() const; // zalozi novy kruh, vypyta si jeho polomer a spocita ho s volajucim
-    Kruh odcitajKruhy(const Kruh *oher) const;
+    Kruh odcitajKruhy(const Kruh *other) const;
     Kruh odcitajKruhy(const Kruh other) const;
     Kruh odcitajKruhy() const;
     bool jeMensi(const Kruh *other);//true or false // pri pointeroch dávame const aby ho nedokázal zmeniť
     //static const float PI; // 1.spôsob
     static constexpr float PI=3.14; //2.spôsob
+    static void vymenKruhy(Kruh *prvy,Kruh *druhy);//1.sposob//static- spoloky pre vsetky objekty
+    static void vymenKruhy(Kruh &prvy, Kruh &druhy);//2.s posov cez odkazy
 };
 //const sa dáva pri metódach u ktorrých nechceme aby menili objekt (použij vždy, keď nechceš aby menila))
 //Pri 1. spôsobeinicializácia konštanty. Nemôžeme ju urobiť vo vnútri triedy
