@@ -54,7 +54,7 @@ Kruh::Kruh() {
     int mPolomer;
     std::cout<<"Zadaj polmer:";
     std::cin>>mPolomer;
-    this->polomer=mPolomer
+    this->polomer=mPolomer;
 }
 
 Kruh::Kruh(int r):polomer(r) //iniciačný zoznam premenných
@@ -63,22 +63,22 @@ Kruh::Kruh(int r):polomer(r) //iniciačný zoznam premenných
 }
 
 Kruh Kruh::odcitajKruhy(const Kruh *other) const {
-    int v= this->polomer-other->polomer
+    int v= this->polomer-other->polomer;
     return (polomer<other->polomer)? 1:v;
 }
 
 Kruh Kruh::odcitajKruhy(const Kruh other) const {
-    int v= this->polomer-other->polomer
-    return (polomer<other->polomer)? 1:v;        int
+    int v= this->polomer-other.polomer;
+    return (polomer<other.polomer)? 1:v;
 }
 
 Kruh Kruh::odcitajKruhy() const {
-    int v= this->polomer-other->polomer
-    return (polomer<oher->polomer)? 1:v;
+    //int v= this->polomer-other->polomer
+    //return (polomer<otherher->polomer)? 1:v;
 }
 
 void Kruh::vymenKruhy(Kruh *prvy, Kruh *druhy) {
-    Kruh std( r: 0);
+    Kruh std( 0);
     std=*prvy;
     *prvy= *druhy;
     *druhy= std;
@@ -86,7 +86,7 @@ void Kruh::vymenKruhy(Kruh *prvy, Kruh *druhy) {
 }
 
 void Kruh::vymenKruhy(Kruh &prvy, Kruh &druhy) {
-    Kruh std( r: 0);
+    Kruh std( 0);
     std = prvy;
     prvy = druhy;
     druhy = std;
@@ -103,9 +103,63 @@ bool Kruh::operator<(const Kruh &other) const {
     return polomer<other.polomer;
 }
 
+Kruh Kruh::operator-(const Kruh &other) const {
+    int v= this->polomer-other.polomer;
+    return (polomer<other.polomer)? 1:v;
+}
 
-bool Kruh::jeMensi(const Kruh *other) const
-{
+Kruh Kruh::operator*(int cislo) const {
+    return Kruh(polomer*cislo);
+}
 
+Kruh Kruh::operator+(int cislo) const {
+    return {polomer+ cislo};
+}
+
+Kruh Kruh::operator-(int cislo) const {
+    return (polomer>cislo)?Kruh( polomer-cislo):Kruh( 1);
+}
+
+bool Kruh::jeMensi(const Kruh *other) {
     return (polomer<other->polomer)? true:false;// ak je odpoved ano tak true ak nie tak flase
 }
+
+Kruh &Kruh::operator++() {
+    ++polomer;
+    return (*this); //this znamena že vráti len odkaz na daný objekt
+}
+
+Kruh Kruh::operator++(int nepouzijem) {
+    Kruh Tmp = (*this); //vytvaram objekt v zasobniku ktory sa premaze ihned po dokonceni funkcie, preto nemozeme
+    ++polomer;
+    return  Tmp;
+}
+
+
+
+
+
+const Kruh &Kruh::operator--() {
+    polomer= (polomer-1<0)?1:polomer-1;
+    return  (*this);
+}
+
+Kruh Kruh::operator--(int nepouzijem) {
+    Kruh Tmp = (*this);
+    --polomer;
+    return  Tmp;
+}
+
+const Kruh &Kruh::operator+=(int cislo) const {
+    return Kruh(polomer+cislo);
+}
+
+const Kruh &Kruh::operator-=(int cislo) const {
+    ;return (polomer>cislo)?Kruh( polomer-cislo):Kruh( 1);
+}
+
+
+
+
+
+

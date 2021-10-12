@@ -18,11 +18,17 @@ namespace  Roman{
 }
  */
 int main() {
-    Kruh K1( r:4);
-    Kruh K2( r: 8);
+    Kruh K1( 4);
+    Kruh K2( 8);
     Kruh Spocitane=K1+K2; //vdaka pretazenemu operatoru + vie ako spocitat objekty typu kruh
-    std::cout<<Spocitane.getPolomer();
+   // std::cout<<Spocitane.getPolomer();
     std::cout<<(K1<K2);
+    std::cout<<(K1+10).getPolomer();
+    std::cout<<(K1-10).getPolomer();
+    std::cout<<(K1*10).getPolomer();
+    std::cout<<(K1-K2).getPolomer();
+    ++K1;
+    // ++++K1; - ak by nebol const pred tým kruh tak by táto vec fungovala
     /*
     //pracovanie s odkazami
     int c;

@@ -27,6 +27,17 @@ public:
     //prezentovanie operatorov
     Kruh operator+(const Kruh &other) const;//spocituje 2 kruhy
     bool operator<(const Kruh &other) const;//zistuje ci je kruh mensi
+    Kruh operator-(const Kruh &other) const;
+    Kruh operator*(int cislo) const;
+    Kruh operator+(int cislo) const;
+    Kruh operator-(int cislo) const;
+    const Kruh& operator++();
+     Kruh operator++(int nepouzijem); //parameter int nepouzijem sa nikdy nepouzije ale takto bude vediet, ze sa pretazuje postfix
+    const Kruh& operator--();
+    Kruh operator--(int nepouzijem);
+    const Kruh& operator+=(int cislo) const;
+    const Kruh& operator-=(int cislo) const;
+
 
     //koniec prez. operatorov
     Kruh spocitajKruhy(Kruh other) const;//takto kopírujeme a posielame celý kruh
