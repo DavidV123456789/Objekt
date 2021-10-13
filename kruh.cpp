@@ -124,10 +124,7 @@ bool Kruh::jeMensi(const Kruh *other) {
     return (polomer<other->polomer)? true:false;// ak je odpoved ano tak true ak nie tak flase
 }
 
-Kruh &Kruh::operator++() {
-    ++polomer;
-    return (*this); //this znamena že vráti len odkaz na daný objekt
-}
+
 
 Kruh Kruh::operator++(int nepouzijem) {
     Kruh Tmp = (*this); //vytvaram objekt v zasobniku ktory sa premaze ihned po dokonceni funkcie, preto nemozeme
@@ -146,7 +143,7 @@ const Kruh &Kruh::operator--() {
 
 Kruh Kruh::operator--(int nepouzijem) {
     Kruh Tmp = (*this);
-    --polomer;
+    polomer= (polomer-1<0)?1:polomer-1;
     return  Tmp;
 }
 
@@ -155,7 +152,31 @@ const Kruh &Kruh::operator+=(int cislo) const {
 }
 
 const Kruh &Kruh::operator-=(int cislo) const {
-    ;return (polomer>cislo)?Kruh( polomer-cislo):Kruh( 1);
+    return (polomer>cislo)?Kruh( polomer-cislo):Kruh( 1);
+}
+
+Kruh operator+(int cislo, const Kruh &other) {
+    return  other+cislo;
+}
+
+const Kruh &Kruh::operator++() {
+    ++polomer;
+    return (*this); //this znamena že vráti len odkaz na daný objekt
+}
+
+Kruh operator*(int cislo, const Kruh &other) {
+    return Kruh(cislo*other);
+}
+
+std::ostream &operator<<(std::ostream &os, const Kruh &mojKruh) {
+    os<<"Kruh ma polemer"<<mojKruh.polomer<<std::endl;
+    return os;
+}
+
+std::istream &operator>>(std::istream &is, Kruh &mojKruh) {
+    std::cout<<"Zadaj polomer:";
+    is>>mojKruh.polomer;
+    return is;
 }
 
 

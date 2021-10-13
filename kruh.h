@@ -6,6 +6,7 @@
 #define UNTITLED_KRUH_H
 #include <iostream>
 //cin, cout - objektxx ktore vznikli na zaklade triedy v iostream; misime si ich zo std prestoru zobrat = std::cin/ std::cout
+// iostream obsahuje triedy istream (cin) a ostream (cout)
 
 // na vytvorenie objektu prvotne potrbujeme vytvoriť triedu "šablónu"
 class Kruh
@@ -29,7 +30,9 @@ public:
     bool operator<(const Kruh &other) const;//zistuje ci je kruh mensi
     Kruh operator-(const Kruh &other) const;
     Kruh operator*(int cislo) const;
-    Kruh operator+(int cislo) const;
+    friend Kruh operator*(int cislo, const Kruh & other);
+    Kruh operator+(int cislo) const;//pripocita ku kruhu cislo
+    friend Kruh operator+(int cislo, const Kruh & other);//pripocita k cislu kruh // priatelska funkcia, 1. parameter je cislo 2. kruh, nebude sucastou objektu ale napriek tomu bude mat pristup k privatnym premenným
     Kruh operator-(int cislo) const;
     const Kruh& operator++();
      Kruh operator++(int nepouzijem); //parameter int nepouzijem sa nikdy nepouzije ale takto bude vediet, ze sa pretazuje postfix
@@ -37,8 +40,8 @@ public:
     Kruh operator--(int nepouzijem);
     const Kruh& operator+=(int cislo) const;
     const Kruh& operator-=(int cislo) const;
-
-
+    friend std::ostream & operator<<(std::ostream& os, const Kruh &mojKruh);//pretazenie operatoru na vystup
+    friend std::istream & operator>>(std::istream& is, Kruh &mojKruh);
     //koniec prez. operatorov
     Kruh spocitajKruhy(Kruh other) const;//takto kopírujeme a posielame celý kruh
     Kruh spocitajKruhy(const Kruh *other) const;//*other, takto dávame len odkaz na kruh

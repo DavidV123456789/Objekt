@@ -23,12 +23,22 @@ int main() {
     Kruh Spocitane=K1+K2; //vdaka pretazenemu operatoru + vie ako spocitat objekty typu kruh
    // std::cout<<Spocitane.getPolomer();
     std::cout<<(K1<K2);
-    std::cout<<(K1+10).getPolomer();
-    std::cout<<(K1-10).getPolomer();
-    std::cout<<(K1*10).getPolomer();
-    std::cout<<(K1-K2).getPolomer();
+    //std::cout<<(K1+10).getPolomer();
+    //std::cout<<(K1-10).getPolomer();
+    //std::cout<<(K1*10).getPolomer();
+    //std::cout<<(K1-K2).getPolomer();
+
+    //vzhladom k tomu ze mame definiciu: //friend std::ostream & operator<<(std::ostream& os, const Kruh &mojKruh);
+    std::cout<<(K1+10);
+    std::cout<<(K1-10);
+    std::cout<<(K1*10);
+    std::cout<<(K1-K2);
     ++K1;
     // ++++K1; - ak by nebol const pred tým kruh tak by táto vec fungovala
+    K2++;
+    std::cout<<(10+K1).getPolomer();//nebude fungovať lebo zatial mame len operator Kruh + cislo// funguj vdaka priatelskej funkcii
+    std::cout<<K1;//fungovalo by ak by si dal Kruf<<cout
+    std::cin>>K2;//
     /*
     //pracovanie s odkazami
     int c;
