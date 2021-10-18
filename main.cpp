@@ -40,6 +40,12 @@ int main() {
     std::cout<<K1;//fungovalo by ak by si dal Kruf<<cout
     std::cin>>K2;//
     /*
+    const int kolko=50;
+    Kruh kruhy[kolko];
+    Kruh::generujPoleKruhov(kruhy, kolko);
+    Kruh::vypispoleKruhov(kruhy,kolko);
+     */
+    /*
     //pracovanie s odkazami
     int c;
    int &odkazC = c;
