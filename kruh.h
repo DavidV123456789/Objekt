@@ -15,6 +15,8 @@ class Kruh
 {
 private:
     int polomer;
+    int pocitadlo;
+    
 public:
     Kruh(); //konštruktor, len holý názov triedy + nejaké parametre
     // vypýta si polomer vznikajuceho kruhu
@@ -28,6 +30,7 @@ public:
     float getObvod() const;
     float getObsah() const;
 
+    ~Kruh();//destruktor
     //prezentovanie operatorov
     Kruh operator+(const Kruh &other) const;//spocituje 2 kruhy
     bool operator<(const Kruh &other) const;//zistuje ci je kruh mensi
@@ -65,9 +68,15 @@ public:
     static void generujPoleKruhov(Kruh *pole, int pocet);
     static void vypispoleKruhov(const Kruh *pole, int pocet);
     static Kruh getMaxKruh(const Kruh *pole, int pocet);
-};
+    static void utriedPoleKruhov(Kruh *pole, int pocet);
+    static int cmp(const void * a,const void * b);
+
+    };
+
 //const sa dáva pri metódach u ktorrých nechceme aby menili objekt (použij vždy, keď nechceš aby menila))
 //Pri 1. spôsobeinicializácia konštanty. Nemôžeme ju urobiť vo vnútri triedy
 //const float PI=3.14;
+
+//static premenna je spolocna pre celu triedu
 
 #endif //UNTITLED_KRUH_H

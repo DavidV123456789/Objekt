@@ -39,7 +39,29 @@ int main() {
     std::cout<<(10+K1).getPolomer();//nebude fungovať lebo zatial mame len operator Kruh + cislo// funguj vdaka priatelskej funkcii
     std::cout<<K1;//fungovalo by ak by si dal Kruf<<cout
     std::cin>>K2;//
-    /*
+    //
+     //Dynamicke delenie pamate:
+     int pocet;
+     cout<<"Zadaj pocet prvkov pola:";
+     cin>>pocet;
+     Kruh *dynamickePole= new Kruh [pocet]; //alokacia pamete na hromade
+     of(dynamickePole==NULL)
+    {
+         cout<<"Nepodarilo sa alokovat pamat. Koncim!";
+         exit(2 );
+    }
+    delete [] dynamickePole; //uvolnenie pamate na hromade
+     dynamickePole=0;
+     //
+     Kruh::utriedPoleKruhov(dynamickePole,pocet);
+     cout<<"Povodne pole:"<<endl;
+     Kruh::vypispoleKruhov(dynamickePole, pocet);
+     Kruh::utriedPoleKruhov(dynamickePole,pocet);
+     cout<<"Utriedene pole:"<<endl;
+     Kruh::vypispoleKruhov(dynamickePole, pocet);
+
+
+     /*
     const int kolko=50;
     Kruh kruhy[kolko];
     Kruh::generujPoleKruhov(kruhy, kolko);

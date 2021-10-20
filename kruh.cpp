@@ -195,14 +195,33 @@ void Kruh::vypispoleKruhov(const Kruh *pole, int pocet) {
 }
 
 Kruh Kruh::getMaxKruh(const Kruh *pole, int pocet) {
+    /*
+    Kruh Max= pole[0];
     int max;
     for (int i=0; i<pocet;++i) {
         if(pole+i>pole+i+1){
-            
+            max=(max<pole[i])?pole[i]:max;
         }
 
     }
-    return Kruh();
+    return max;
+    */
+}
+
+void Kruh::utriedPoleKruhov(Kruh *pole, int pocet) {
+    std::qsort((Kruh *)pole,pocet,sizeof(Kruh),cmp);
+    // pri ssort (stablesort) dobry ak potrebujeme zoradit kruhy rovnakej velkosti a to pridanim dalsej vlastnosti ktora bude rozhodovat v tom pripade
+}
+
+int Kruh::cmp(const void *a, const void *b) {
+    Kruh *prvy =(Kruh *)a;  //pretypujeme pointer na void na konkretny pointer kory potrebujeme, u nas Kruh
+    Kruh *druhy = (Kruh *)b;
+    //->polomer, vytiahnem polomer
+    return prvy->polomer-druhy->polomer; //potrebujeme aby fungovalo qsort // ak cheš triediť v opačnom poradí tak to prvy a druhy len prehod
+}
+
+Kruh::~Kruh() {
+
 }
 
 
