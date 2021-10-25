@@ -18,6 +18,7 @@ namespace  Roman{
 }
  */
 int main() {
+    /*
     Kruh K1( 4);
     Kruh K2( 8);
     Kruh Spocitane=K1+K2; //vdaka pretazenemu operatoru + vie ako spocitat objekty typu kruh
@@ -45,7 +46,7 @@ int main() {
      cout<<"Zadaj pocet prvkov pola:";
      cin>>pocet;
      Kruh *dynamickePole= new Kruh [pocet]; //alokacia pamete na hromade
-     of(dynamickePole==NULL)
+     if(dynamickePole==NULL)
     {
          cout<<"Nepodarilo sa alokovat pamat. Koncim!";
          exit(2 );
@@ -60,7 +61,18 @@ int main() {
      cout<<"Utriedene pole:"<<endl;
      Kruh::vypispoleKruhov(dynamickePole, pocet);
 
-
+    */
+    /*
+    //Výnimky
+     //výnimka musí byť vždy objekt
+    int pocet;
+    cout<<"Zadaj pocet prvkov pola:";
+    cin>>pocet;
+    Kruh *dynamickePole;
+    try {
+    }
+     ...
+     */
      /*
     const int kolko=50;
     Kruh kruhy[kolko];

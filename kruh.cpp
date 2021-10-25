@@ -2,6 +2,7 @@
 // Created by map on 27. 9. 2021.
 //
 #include "kruh.h"
+int Kruh::pocetKruhov=0; // nesmie to vyť v triede
 /*
 int Kruh::getPolomer() const {
     return polomer;
@@ -55,6 +56,8 @@ Kruh::Kruh() {
     //std::cout<<"Zadaj polmer:";
     //std::cin>>mPolomer;
     //this->polomer=mPolomer;
+    pocitadlo=++pocetKruhov;//dáva mu umiestenie //koľkiaty je vytvorený
+    polomer=0;
 
 }
 
@@ -223,6 +226,14 @@ int Kruh::cmp(const void *a, const void *b) {
 Kruh::~Kruh() {
 
 }
+
+int Kruh::cmpStable(const void *a, const void *b) {
+    Kruh *prvy =(Kruh *)a;  //pretypujeme pointer na void na konkretny pointer kory potrebujeme, u nas Kruh
+    Kruh *druhy = (Kruh *)b;
+    int rozdiel=prvy->polomer-druhy->polomer;
+    return  (rozdiel==0)?prvy->pocitadlo-druhy->pocitadlo:rozdiel;//zabezpečujem , že ak budú dva objekty rovnaké tak utriedi podľa toho ktory je prvy vytvoreny
+}
+
 
 
 

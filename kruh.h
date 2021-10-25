@@ -13,10 +13,34 @@
 // na vytvorenie objektu prvotne potrbujeme vytvoriť triedu "šablónu"
 class Kruh
 {
+//výnimky: //preto lebo sú to len jednouduché objekty + ich budečme použivať len pritriede kruh
+class noNumber{
+private:
+    const char * msg;
+public:
+    noNumber(const char * sprava):msg(sprava){};
+    void getMsg(){std::cout<<msg<<std::endl;};
+};
+class chybaNula
+{
+private:
+    const char * msg;
+public:
+    chybaNula(const char * sprava):msg(sprava){};
+    void getMsg(){std::cout<<msg<<std::endl;};
+};
+class chybaZaporne
+{
+private:
+    const char * msg;
+public:
+    chybaZaporne(const char * sprava):msg(sprava){};
+    void getMsg(){std::cout<<msg<<std::endl;};
+};
+//
 private:
     int polomer;
     int pocitadlo;
-    
 public:
     Kruh(); //konštruktor, len holý názov triedy + nejaké parametre
     // vypýta si polomer vznikajuceho kruhu
@@ -70,6 +94,9 @@ public:
     static Kruh getMaxKruh(const Kruh *pole, int pocet);
     static void utriedPoleKruhov(Kruh *pole, int pocet);
     static int cmp(const void * a,const void * b);
+    static int cmpStable(const void * a,const void * b);
+    static int pocetKruhov;
+    static int getInt(bool nula=true, bool zaporne=true );
 
     };
 
