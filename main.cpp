@@ -62,7 +62,7 @@ int main() {
      Kruh::vypispoleKruhov(dynamickePole, pocet);
 
     */
-    /*
+
     //Výnimky
      //výnimka musí byť vždy objekt
     int pocet;
@@ -70,9 +70,15 @@ int main() {
     cin>>pocet;
     Kruh *dynamickePole;
     try {
+        dynamickePole = new Kruh [pocet];// alokacia pamate na hromade operatorom new
     }
-     ...
-     */
+    catch(std::bad_alloc & ex)
+    {
+        std::cout<<"Chyba prodelenia pamate";
+        return 1;
+    }
+     //...
+
      /*
     const int kolko=50;
     Kruh kruhy[kolko];

@@ -19,7 +19,7 @@ private:
     const char * msg;
 public:
     noNumber(const char * sprava):msg(sprava){};
-    void getMsg(){std::cout<<msg<<std::endl;};
+    void getMsg()const{std::cout<<msg<<std::endl;};
 };
 class chybaNula
 {
@@ -27,7 +27,7 @@ private:
     const char * msg;
 public:
     chybaNula(const char * sprava):msg(sprava){};
-    void getMsg(){std::cout<<msg<<std::endl;};
+    void getMsg()const{std::cout<<msg<<std::endl;};
 };
 class chybaZaporne
 {
@@ -35,7 +35,7 @@ private:
     const char * msg;
 public:
     chybaZaporne(const char * sprava):msg(sprava){};
-    void getMsg(){std::cout<<msg<<std::endl;};
+    void getMsg()const{std::cout<<msg<<std::endl;};
 };
 //
 private:

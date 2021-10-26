@@ -57,8 +57,8 @@ Kruh::Kruh() {
     //std::cin>>mPolomer;
     //this->polomer=mPolomer;
     pocitadlo=++pocetKruhov;//dáva mu umiestenie //koľkiaty je vytvorený
-    polomer=0;
-
+    //polomer=0;
+    polomer=getInt();//aby sme odskúšali výnimky
 }
 
 Kruh::Kruh(int r):polomer(r) //iniciačný zoznam premenných
@@ -232,6 +232,49 @@ int Kruh::cmpStable(const void *a, const void *b) {
     Kruh *druhy = (Kruh *)b;
     int rozdiel=prvy->polomer-druhy->polomer;
     return  (rozdiel==0)?prvy->pocitadlo-druhy->pocitadlo:rozdiel;//zabezpečujem , že ak budú dva objekty rovnaké tak utriedi podľa toho ktory je prvy vytvoreny
+}
+
+int Kruh::getInt(bool nula, bool zaporne) {
+    int tmp;
+    while(true){
+        try {
+            std::cout << "Zadaj cele cislo:";
+            if (!(std::cin >> tmp))//v prípade ak by nebolo citanie uspesne t.j. nebolo zadane korektne cele cislo, !-negacia
+            {
+                throw Kruh::noNumber("Nebolo zadane cislo!"); // vyhodime vynimku a posleme spravu konstruktorovi
+            }
+            if(nula==false && tmp==0)
+            {
+                throw Kruh::chybaNula("Nula nie je povolena!");
+            }
+            if(zaporne==false && tmp<0)
+            {
+                throw Kruh::chybaZaporne("Zaporne cislo nie je povolone!");
+            }
+        }
+        catch(const Kruh::noNumber & ex) //zachytime vynimku ak nebolo zadane cislo
+        {
+            std::cin.clear(); // vymazeme chybocy bit nastaveny v objekte cin neuspesnym citnaim
+            std::cin.ignore(1000, '\n' ); //vycisti vyrovnaviaciu pamat klavesnice od zvysku zadaneho vstupu
+            ex.getMsg(); // vypiseme spravu
+            continue;
+        }
+        catch(const Kruh::chybaNula & ex)
+        {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            ex.getMsg();
+            continue;
+        }
+        catch(const Kruh::chybaZaporne & ex)
+        {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            ex.getMsg();
+            continue;
+        }
+        return tmp;
+    }
 }
 
 
