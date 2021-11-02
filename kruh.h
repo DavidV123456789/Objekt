@@ -14,28 +14,46 @@
 class Kruh
 {
 //výnimky: //preto lebo sú to len jednouduché objekty + ich budečme použivať len pritriede kruh
-class noNumber{
-private:
-    const char * msg;
-public:
-    noNumber(const char * sprava):msg(sprava){};
-    void getMsg()const{std::cout<<msg<<std::endl;};
-};
-class chybaNula
+
+//rodicovska trieda od ktorej odvodime triedy chyb
+class Chyba
 {
-private:
+protected:  //chraneny clen potomkovia maju k nemu pristup ako k verejnemu, ostatne triedy ako k privatnemu
     const char * msg;
+    int kodChyby;
 public:
-    chybaNula(const char * sprava):msg(sprava){};
-    void getMsg()const{std::cout<<msg<<std::endl;};
+    Chyba(const char *sprava):msg(sprava){};
+    void  getMsg()const {std::cout<<msg<<std::endl;};
+    int vratKodChyby(){return  kodChyby;};
 };
-class chybaZaporne
-{
-private:
-    const char * msg;
+//
+    class noNumber:public  Chyba // trieda je verejne odvodena od triedy Chyba
+        {
+/*private:
+    const char * msg;*/
+        private:
+            const char * mojaMsg;//pridaná metoda
 public:
-    chybaZaporne(const char * sprava):msg(sprava){};
-    void getMsg()const{std::cout<<msg<<std::endl;};
+    noNumber(const char * sprava):Chyba(sprava){}; //noNumber(const char * sprava):msg(sprava){}; ak by nebola ta rodicovska trieda //
+    //void getMsg()const{std::cout<<msg<<std::endl;};
+    const char * getMojaMsg(){return mojaMsg;};
+        void  getMsg()const {std::cout<<msg<<mojaMsg<<std::endl;};//prepísali sme rodičovskú správu, pri spustení sa spustí potomkova nie rodičvská
+};
+class chybaNula:public Chyba
+{
+/*private:
+    const char * msg;*/
+public:
+    chybaNula(const char * sprava):Chyba(sprava){};
+    //void getMsg()const{std::cout<<msg<<std::endl;};
+};
+    class chybaZaporne:public Chyba
+{
+/*private:
+    const char * msg;*/ //bolo by tam ak by nebola materská trieda
+public:
+    chybaZaporne(const char * sprava):Chyba(sprava){};
+    //void getMsg()const{std::cout<<msg<<std::endl;};
 };
 //
 private:

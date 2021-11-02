@@ -58,7 +58,9 @@ Kruh::Kruh() {
     //this->polomer=mPolomer;
     pocitadlo=++pocetKruhov;//dáva mu umiestenie //koľkiaty je vytvorený
     //polomer=0;
-    polomer=getInt();//aby sme odskúšali výnimky
+
+    //polomer=getInt();//aby sme odskúšali výnimky
+    polomer=getInt(false);
 }
 
 Kruh::Kruh(int r):polomer(r) //iniciačný zoznam premenných
@@ -245,14 +247,15 @@ int Kruh::getInt(bool nula, bool zaporne) {
             }
             if(nula==false && tmp==0)
             {
-                throw Kruh::chybaNula("Nula nie je povolena!");
+                throw Kruh::chybaNula("Nula nie je povolena!" /*"Sprava od potomka" */);
             }
             if(zaporne==false && tmp<0)
             {
                 throw Kruh::chybaZaporne("Zaporne cislo nie je povolone!");
             }
         }
-        catch(const Kruh::noNumber & ex) //zachytime vynimku ak nebolo zadane cislo
+
+        /*catch(const Kruh::noNumber & ex) //zachytime vynimku ak nebolo zadane cislo
         {
             std::cin.clear(); // vymazeme chybocy bit nastaveny v objekte cin neuspesnym citnaim
             std::cin.ignore(1000, '\n' ); //vycisti vyrovnaviaciu pamat klavesnice od zvysku zadaneho vstupu
@@ -270,6 +273,15 @@ int Kruh::getInt(bool nula, bool zaporne) {
         {
             std::cin.clear();
             std::cin.ignore(1000, '\n');
+            ex.getMsg();
+            continue;
+        }*/
+        catch(const Kruh::Chyba & ex)
+            //zachytime vynimku ak nebolo zadane cislo, objektu rodica sa moze priradit odkaz...
+            //kompilator potom vzdy zavola spravni metodu podĺa typu odkazu a nie typu...
+        {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n' );
             ex.getMsg();
             continue;
         }
