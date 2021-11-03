@@ -23,7 +23,7 @@ protected:  //chraneny clen potomkovia maju k nemu pristup ako k verejnemu, osta
     int kodChyby;
 public:
     Chyba(const char *sprava):msg(sprava){};
-    void  getMsg()const {std::cout<<msg<<std::endl;};
+    virtual void  getMsg()const {std::cout<<msg<<std::endl;};//virtual ak budeme ju menit v potomku
     int vratKodChyby(){return  kodChyby;};
 };
 //
@@ -34,10 +34,10 @@ public:
         private:
             const char * mojaMsg;//pridaná metoda
 public:
-    noNumber(const char * sprava):Chyba(sprava){}; //noNumber(const char * sprava):msg(sprava){}; ak by nebola ta rodicovska trieda //
+    noNumber(const char * sprava):Chyba(sprava){}; //noNumber(const char * sprava. const char * mojaSprava):Chyba(sprava){mojaMsg=mojaSprava;};; ak by nebola ta rodicovska trieda //
     //void getMsg()const{std::cout<<msg<<std::endl;};
     const char * getMojaMsg(){return mojaMsg;};
-        void  getMsg()const {std::cout<<msg<<mojaMsg<<std::endl;};//prepísali sme rodičovskú správu, pri spustení sa spustí potomkova nie rodičvská
+    void  getMsg()const {std::cout<<msg<<mojaMsg<<std::endl;};//prepísali sme rodičovskú správu, pri spustení sa spustí potomkova nie rodičvská
 };
 class chybaNula:public Chyba
 {
@@ -55,7 +55,13 @@ public:
     chybaZaporne(const char * sprava):Chyba(sprava){};
     //void getMsg()const{std::cout<<msg<<std::endl;};
 };
-//
+
+public:  class streamError:public  Chyba
+    {
+    public: streamError(const char *sprava): Chyba(sprava){};
+    };
+
+    //
 private:
     int polomer;
     int pocitadlo;
@@ -116,7 +122,8 @@ public:
     static int pocetKruhov;
     static int getInt(bool nula=true, bool zaporne=true );
 
-    };
+
+};
 
 //const sa dáva pri metódach u ktorrých nechceme aby menili objekt (použij vždy, keď nechceš aby menila))
 //Pri 1. spôsobeinicializácia konštanty. Nemôžeme ju urobiť vo vnútri triedy

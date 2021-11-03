@@ -175,12 +175,13 @@ Kruh operator*(int cislo, const Kruh &other) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Kruh &mojKruh) {
-    os<<"Kruh ma polemer"<<mojKruh.polomer<<std::endl;
+    //os<<"Kruh ma polemer"<<mojKruh.polomer<<std::endl; //dávame prec aby pri nacitani psuboru si znocu nepytal
+    os<<"Kruh ma polomer"<<mojKruh.polomer<<std::endl;
     return os;
 }
 
 std::istream &operator>>(std::istream &is, Kruh &mojKruh) {
-    std::cout<<"Zadaj polomer:";
+    //std::cout<<"Zadaj polomer:";//dávame prec aby pri nacitani psuboru si znocu nepytal
     is>>mojKruh.polomer;
     return is;
 }
@@ -277,7 +278,7 @@ int Kruh::getInt(bool nula, bool zaporne) {
             continue;
         }*/
         catch(const Kruh::Chyba & ex)
-            //zachytime vynimku ak nebolo zadane cislo, objektu rodica sa moze priradit odkaz...
+            //zachytime vynimku ak nebolo zadane cislo, objektu rodica sa moze priradit odkaz na objektu potomka
             //kompilator potom vzdy zavola spravni metodu podĺa typu odkazu a nie typu...
         {
             std::cin.clear();

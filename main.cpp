@@ -1,9 +1,12 @@
 
 #include "kruh.h"
+#include <fstream> // na pracu sp subormi
 
 using  std::cout; //importovanie cout do globalneho priestoru kde je aj main 1
 using  std::cin;
 using  std::endl;
+using  std::ifstream; // sluzi na vstup zo suboru
+using  std::ofstream; // sluzi na vystup do suboru
 
 //using namespace srd; --- cely menny priestor .= nepotrebujeme to cele zbytocne nepouzivat;
 /*
@@ -18,6 +21,37 @@ namespace  Roman{
 }
  */
 int main() {
+    //cistanie to suboru
+    ifstream fin;//vytvorime objekt pre citanie zo suboru
+    fin.open("citaj.txt"); // inicializujeme objekt konkretnym suborom
+    //ifstream fin("citaj.txt"); alternativny sposob otvorenia suboru pomocou konstruktoru
+    ofstream fout;  //vpisanie do suboru
+    fout.open("zapis.txt");
+    try {
+        if(!fin.is_open()) //otestujem otvorenie suboru, ak sa nepodarilo otvoriť vyhodim vynimku
+        {
+            throw Kruh::streamError("Nepodarilo sa otvorit súbor na citanie!");
+        }
+        Kruh K(0);// objekt do ktoreho budeme citat jednotlive kruhy
+        if(!fout.is_open()) //otestujem otvorenie suboru na zápis, ak sa nepodarilo otvoriť vyhodim vynimku
+        {
+            throw Kruh::streamError("Nepodarilo sa otvorit súbor na zapis!");
+        }
+        while(fin>>K) // kym je citanie uspesne
+        {
+            cout<<K;  //vypiseme kruh na obrazovku
+            fout<<K; //zapiseme kruh do suvoru
+        }
+        fout.close();
+        fin.close(); // uzatvorime subor; musime
+    }
+    //otvori subor a vytvori novy subor
+    catch  (const Kruh::streamError & ex)
+    {
+        ex.getMsg();
+        return  1;
+    }
+    //
     /*
     Kruh K1( 4);
     Kruh K2( 8);
