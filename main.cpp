@@ -21,8 +21,16 @@ namespace  Roman{
 }
  */
 int main() {
+    Kruh::generujSuborKruhov("rand.txt", 50);
+    Kruh *kruhy =Kruh::precitajSuborKruhov("rand.txt", 50)
+            if(kruhy!=NULL)
+            {
+                Kruh::vypisPoleKruhov(kruhy, 50);
+
+            }
+            delete //??????????????????????????????????????,
     //cistanie to suboru
-    ifstream fin;//vytvorime objekt pre citanie zo suboru
+    /*ifstream fin;//vytvorime objekt pre citanie zo suboru
     fin.open("citaj.txt"); // inicializujeme objekt konkretnym suborom
     //ifstream fin("citaj.txt"); alternativny sposob otvorenia suboru pomocou konstruktoru
     ofstream fout;  //vpisanie do suboru
@@ -50,7 +58,7 @@ int main() {
     {
         ex.getMsg();
         return  1;
-    }
+    }*/
     //
     /*
     Kruh K1( 4);
@@ -99,7 +107,8 @@ int main() {
 
     //Výnimky
      //výnimka musí byť vždy objekt
-    int pocet;
+    /*
+     int pocet;
     cout<<"Zadaj pocet prvkov pola:";
     cin>>pocet;
     Kruh *dynamickePole;
@@ -110,7 +119,7 @@ int main() {
     {
         std::cout<<"Chyba prodelenia pamate";
         return 1;
-    }
+    }*/
      //...
 
      /*

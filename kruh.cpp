@@ -2,6 +2,7 @@
 // Created by map on 27. 9. 2021.
 //
 #include "kruh.h"
+#include <fstream>;
 int Kruh::pocetKruhov=0; // nesmie to vyť v triede
 /*
 int Kruh::getPolomer() const {
@@ -288,6 +289,75 @@ int Kruh::getInt(bool nula, bool zaporne) {
         }
         return tmp;
     }
+}
+
+int Kruh::generujSuborKruhov(const char *nazov, int kolko) {
+    //?????????????????????????????????????????????????????????????????????????
+    std::ofstream fout;
+    fout.open("rand.txt");
+    int i, j;
+    j = rand() % 11;
+    for(i=0;i<j;i++) {
+        try {
+
+            Kruh K= rand() % 100;
+            if (!fout.is_open()) {
+                throw Kruh::streamError("Nepodarilo sa otvorit súbor na zapis!");
+            }
+            while (fout << K) {
+                fout << K;
+                fout << ' ';
+            }
+            fout.close();
+
+        }
+        catch  (const Kruh::streamError & ex)
+        {
+            ex.getMsg();
+            return  0;
+        }
+    }
+
+}
+
+Kruh *Kruh::precitajSuborKruhov(const char *nazov, int kolko) {
+    //????????????????????????????????????????????????????????????????????????
+    std::ifstream fin;
+    fin.open("rand.txt");
+    try {
+        int r; int i = -1;
+        Kruh *poleKruhov;
+        Kruh K(0);
+        if(!fin.is_open())
+        {
+            throw Kruh::streamError("Nepodarilo sa otvorit súbor na citanie!");
+        }
+        catch  (const Kruh::streamError & ex)
+        {
+            ex.getMsg();
+            return  0;
+        }
+
+    }
+    int r; int i = -1;
+    Kruh *poleKruhov;
+    Kruh K(0);
+
+    try{
+        poleKruhov= new Kruh[kolko];
+    }
+    catch (std::bad_alloc & ex)
+    {
+        ex.getMsg();
+        return  0;
+    }
+        while(fin >> r)
+        {
+            poleKruhov[i++].polomer=r;
+
+        }
+    fin.close();
+    return poleKruhov;
 }
 
 

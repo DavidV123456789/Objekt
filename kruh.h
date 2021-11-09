@@ -7,6 +7,7 @@
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
+#include <iomanip>
 //cin, cout - objektxx ktore vznikli na zaklade triedy v iostream; misime si ich zo std prestoru zobrat = std::cin/ std::cout
 // iostream obsahuje triedy istream (cin) a ostream (cout)
 
@@ -122,7 +123,8 @@ public:
     static int pocetKruhov;
     static int getInt(bool nula=true, bool zaporne=true );
 
-
+    static int generujSuborKruhov(const char *nazov, int kolko);
+    static Kruh * precitajSuborKruhov(const char *nazov, int kolko);
 };
 
 //const sa dáva pri metódach u ktorrých nechceme aby menili objekt (použij vždy, keď nechceš aby menila))
@@ -130,5 +132,23 @@ public:
 //const float PI=3.14;
 
 //static premenna je spolocna pre celu triedu
+
+namespace inout
+{
+    using std::cout;
+    using std::cin;
+    using std::endl;
+    // <iomanip>:
+    using std::setfill; // nastvi vyplnovy znak napr. setfull('-')
+    using std::setw;    //nastavi sirku vystupu napr. setw(15), treba použit pred každým výpisom
+    using std::setprecision; // nastavi pocet desatinych miest napr. setprecsion(5)
+    //
+    using std::left;    // zarovnanie vstupu vlavo
+    using std::right;   // zarovnanie vstupu vpravo
+    using std::showpos; //vypisanie znamienka napr. cislo 10 vypise ako +10
+    using std::noshowpos;   // nevypisovanie znamienka
+
+}
+using namespace inout; // pouzijeme manipulatory na mieste, kde to je potrebne
 
 #endif //UNTITLED_KRUH_H
